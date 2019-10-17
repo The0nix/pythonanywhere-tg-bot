@@ -20,8 +20,10 @@ def who_callback(update, context):
         user = ('@{}'.format(update.effective_user.username)
                 if update.effective_user.username
                 else update.effective_user.first_name)
+        action = 'love' if update.effective_user.id == 11436017 else 'slap'
+        text = '/{} {}'.format(action, user)
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text='/slap {}'.format(user),
+                                 text=text,
                                  reply_to_message_id=update.message.message_id)
     except Exception as e:
         logger.error(e)
