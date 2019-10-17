@@ -10,6 +10,8 @@ logger = logging.getLogger(__name__)
 WHO_REGEX = re.compile(os.environ['SLAPBOT_REGEX'], re.IGNORECASE)
 ONIXINO_ID = 124147029
 TASHA_ID = 11436017
+WHITELIST = {ONIXINO_ID}
+
 
 def get_username(user):
     return ('@{}'.format(user.username)
@@ -23,11 +25,11 @@ def start_callback(update, context):
 
 
 def who_callback(update, context):
+    if update.effective_user.id in WHITELIST:
+        return
     try:
-        user = ('@{}'.format(update.effective_user.username)
-                if update.effective_user.username
-                else update.effective_user.first_name)
-        action = 'love' if update.effective_user.id == 11436017 else 'slap'
+        user = get_username(update.effective_user)
+        action = 'love' if update.effective_user.id == TASHA_ID else 'slap'
         text = '/{} {}'.format(action, user)
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text=text,
