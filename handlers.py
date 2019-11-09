@@ -25,7 +25,7 @@ def start_callback(update, context):
 
 
 def user_left_callback(update, context):
-    username = get_username(update.left_chat_member)
+    username = get_username(update.message.left_chat_member)
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text='{} ливнул из чата. Вот пидор!'.format(username))
 
