@@ -64,5 +64,5 @@ handlers = [
     CommandHandler('start', start_callback),
     CommandHandler('manual_slap', manual_slap_callback),
     MessageHandler(Filters.regex(WHO_REGEX), who_callback),
-    MessageHandler(Filters.left_chat_member, user_left_callback),
+    MessageHandler(Filters.status_update.left_chat_member, user_left_callback),
 ]
