@@ -24,6 +24,12 @@ def start_callback(update, context):
                              text='Кто такой?')
 
 
+def user_left_callback(update, context):
+    username = get_username(update.left_chat_member)
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text='{} ливнул из чата. Вот пидор!'.format(username))
+
+
 def who_callback(update, context):
     if update.effective_user.id in WHITELIST:
         return
@@ -58,4 +64,5 @@ handlers = [
     CommandHandler('start', start_callback),
     CommandHandler('manual_slap', manual_slap_callback),
     MessageHandler(Filters.regex(WHO_REGEX), who_callback),
+    MessageHandler(Filters.left_chat_member, user_left_callback),
 ]
