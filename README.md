@@ -1,10 +1,7 @@
-# Slapbot
-Bot for slapping people in telegram chats
-## Usage
-* Host a server with the bot (for example on [pythonanywhere](http://pythonanywhere.com)),
-* Set `SLAPBOT_TOKEN` environment variable to your telegram bot token
-* Set `SLAPBOT_REGEX` to regex by which the bot will slap people.
-* Add the bot to your group chat
+# PythonAnywhere bot template
+A simple template for hosting a telegram bot for example on [pythonanywhere](http://pythonanywhere.com)
 
-Done! Now your bot will reply with "/slap @username" to messages that match regex.
+Handlers are located in `handlers.py`.
+You can read docs at [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) oficial repo 
+
 
